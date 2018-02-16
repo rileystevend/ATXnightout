@@ -14,10 +14,10 @@ app.use(bodyParser.json());
 //ROUTES GO HERE
 
 app.get('/app', function(req, res) {
-
+//send welcome page
 });
 app.post('/app', function(req, res) {
-
+//pull app data
 });
 
 app.listen(port, console.log(`listening on port ${port}`));
