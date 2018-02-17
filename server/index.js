@@ -15,6 +15,7 @@ app.use(bodyParser.json());
 
 app.get('/app', function(req, res) {
 //send welcome page
+    res.end();
 });
 app.post('/app', function(req, res) {
 //pull app data

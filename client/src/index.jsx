@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom';
 
 class App extends React.Component {
     constructor() {
+        super();
         this.state = {
             welcome: true,
             show: null,
