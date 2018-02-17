@@ -4,9 +4,10 @@ class Search extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            zip: null,
-            date: null
+            zip: '',
+            date: ''
         }
+        this.search = this.search.bind(this);
         this.onZipChange = this.onZipChange.bind(this);
         this.onDateChange = this.onDateChange.bind(this);
     }
@@ -25,21 +26,22 @@ class Search extends React.Component {
         })
     }
 
-    onSearch(e) {
+    search(e) {
         e.preventDefault();
-        this.props.search(this.state.zip, this.state.date)
-        //pass search function down as prop
+        this.props.onSearch(this.state.zip, this.state.date);
     }
 
     render() {
         return (
           <div> 
             Pick Your Night
-            <input onChange={this.onDateChange}/>
+            <input value={this.state.date} onChange={this.onDateChange}/>
             What's Your Zip? 
-            <input onChange={this.onZipChange}/>
-            <button onClick={this.onSearch}>Let's Boogie</button>
+            <input value={this.state.zip} onChange={this.onZipChange}/>
+            <button onClick={this.search}>Let's Boogie</button>
           </div>
         )
     }
 }
+
+export default Search;

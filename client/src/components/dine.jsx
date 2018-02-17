@@ -1,2 +1,10 @@
+import React from 'react';
 
-//export default this function
+const Dine = (restaurant) => (
+  <div>
+   {restaurant.name}
+  </div>
+)
+
+
+ export default Dine;

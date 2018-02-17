@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-//import Show  from [filepath]
-//import Dine component from [filepath]
+import axios from 'axios';
+import Show from './components/show.jsx';
+import Dine from './components/dine.jsx';
+import Search from './components/search.jsx';
 
 class App extends React.Component {
     constructor() {
@@ -29,17 +31,27 @@ class App extends React.Component {
         })
     }
 
-    render () {
+    render() {
         if (this.state.welcome === true) {
-            return <h1>Welcome to the landing page for NightLyve</h1>
-            //landing page
-            //<Search />
+            return (
+                <div>
+                    <h1>Welcome to the landing page for NightLyve</h1>
+                    <Search onSearch={this.search}/>
+                </div>
+            )
         } else {
-            return //<Search onSearch={this.search}/><Show/><Dine/>
+            return ( 
+            <div> 
+                <Search onSearch={this.search}/>
+                <Show restaurant={this.state.restaurant}/>
+                <Dine concert={this.state.show}/>
+            </div>
+            )
         }
     }
 
 }
+
 
 //constructor(state: welcome: true)
 //componentDidMount()

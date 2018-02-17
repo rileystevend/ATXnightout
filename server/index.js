@@ -19,6 +19,7 @@ app.get('/app', function(req, res) {
 });
 app.post('/app', function(req, res) {
 //pull app data
+    res.send('');
 });
 
 app.listen(port, console.log(`listening on port ${port}`));
