@@ -31,11 +31,11 @@ class App extends React.Component {
 
     render () {
         if (this.state.welcome === true) {
-            return <h1>Welcome to the landing page!</h1>
-            //loading page
+            return <h1>Welcome to the landing page for NightLyve</h1>
+            //landing page
             //<Search />
         } else {
-            return //<Search/><Show/><Dine/>
+            return //<Search onSearch={this.search}/><Show/><Dine/>
         }
     }
 
@@ -44,7 +44,7 @@ class App extends React.Component {
 //constructor(state: welcome: true)
 //componentDidMount()
 //render (if this.state.welcome = true, render loading page; else, run app page with result 
-
+//if shows.length === 0 send {sorry, couldn't find any shows :( )}
 //search (axios.post( , ()=> this.setState(welcome: false)))
 
 ReactDOM.render(<App />, document.getElementById('app'));
