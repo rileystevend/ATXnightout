@@ -5,10 +5,12 @@
 
 const axios = require('axios');
 const jamKey = process.env.jamKey || 'jh8fu4aex27733bzszu6kprj';
+const foodKey = process.env.foodKey || 'dd071c27f3428a592bdf3cec117a2cc7';
 
 const getPair = (zipcode, date)=> {
+  let date2 = date.slice(0, date.length-2) + (parseInt(date.slice(date.length-2)) + 1).toString();
   return (
-    axios.get(`http://api.jambase.com/events?zipCode=${zipcode}&radius=7&startDate=${date}&endDate=${date}&page=0&api_key=${jamKey}`)
+    axios.get(`http://api.jambase.com/events?zipCode=${zipcode}&radius=7&startDate=${date}&endDate=${date2}&page=0&api_key=${jamKey}`)
     .then((shows) => {
       const show = shows.data.Events[0];
       let long = show.Venue.Longitude.toString();
@@ -16,7 +18,7 @@ const getPair = (zipcode, date)=> {
       //return whole show
       return axios.get(`https://developers.zomato.com/api/v2.1/geocode?lat=${lat}&lon=${long}`, {
         'headers': {
-          'user-key': 'dd071c27f3428a592bdf3cec117a2cc7'
+          'user-key': foodKey
         }
       })
       .then((result2) => {
