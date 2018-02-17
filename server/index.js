@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const axios = require('axios');
 const cors = require('cors');
+const helper = require('../helpers/apirequest.js');
 let port = process.env.PORT || 8080;
 
 let app = express();
@@ -11,15 +12,24 @@ app.use(bodyParser.urlencoded({ extended: false })); //????
 app.use(bodyParser.json());
 
 
-//ROUTES GO HERE
 
 app.get('/app', function(req, res) {
-//send welcome page
     res.end();
 });
 app.post('/app', function(req, res) {
-//pull app data
-    res.send('');
+let zip = req.body.zipcode;
+let date = req.body.date;
+console.log(req.body.zipcode, req.body.date)
+
+helper.getPair(zip, date)
+    .then((resultArray) => {
+        console.log('THIS IS THE RESULT ARRAY', resultArray)
+        res.send(resultArray)
+    })
+    .catch((err) => {
+        console.log('ERROR AT SERVER LEVEL', err)
+    })
+
 });
 
 app.listen(port, console.log(`listening on port ${port}`));

@@ -16,14 +16,17 @@ class App extends React.Component {
         this.search = this.search.bind(this);
     }
 
-    search(zipcode) {
+    search(zipcode, date) {
         axios.post('/app', {
-            zipcode: zipcode
+            zipcode: zipcode,
+            date: date
         })
         .then((response) => {
 //DO SOMETHING WITH OUR SEARCH RESULTS
             this.setState({
-                welcome: false
+                welcome: false,
+                
+
             })
         })
         .catch((err) => {
