@@ -2,7 +2,7 @@ import React from 'react';
 
 const Show = (concert) => (
   <div>
-   {concert.name}
+   {concert.Artists[0].Name}
   </div>
 )
 

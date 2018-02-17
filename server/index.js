@@ -23,7 +23,6 @@ console.log(req.body.zipcode, req.body.date)
 
 helper.getPair(zip, date)
     .then((resultArray) => {
-        console.log('THIS IS THE RESULT ARRAY', resultArray)
         res.send(resultArray)
     })
     .catch((err) => {

@@ -2,7 +2,7 @@ import React from 'react';
 
 const Dine = (restaurant) => (
   <div>
-   {restaurant.name}
+   {restaurant.restaurant.name}
   </div>
 )
 
