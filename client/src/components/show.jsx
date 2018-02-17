@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Show = (concert) => (
+const Show = ({ concert }) => (
   <div>
    {concert.Artists[0].Name}
   </div>

@@ -6,8 +6,8 @@ import Dine from './components/dine.jsx';
 import Search from './components/search.jsx';
 
 class App extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             welcome: true,
             show: null,
@@ -24,16 +24,15 @@ class App extends React.Component {
         })
         .then((response) => {
             console.log(response.data);
-//DO SOMETHING WITH OUR SEARCH RESULTS
-            // this.setState({
-            //      welcome: false
-            // // //     // show: response.data[0],
-            // // //     // restaurant: response.data[1]
-            //  });
-        })
+            this.setState({
+                welcome: false,
+                show: response.data[0],
+                restaurant: response.data[1]
+            })
+        })  
         .catch((err) => {
             console.log('ERROR IN THE JSX SEARCH')
-            this.render();
+            // console.error(err);
         })
     }
 
@@ -49,8 +48,8 @@ class App extends React.Component {
             return ( 
             <div> 
                 <Search onSearch={this.search}/>
-                <Show restaurant={this.state.restaurant}/>
-                <Dine concert={this.state.show}/>
+                <Show concert={this.state.show}/>
+                <Dine restaurant={this.state.restaurant}/>
             </div>
             )
         }
@@ -59,10 +58,7 @@ class App extends React.Component {
 }
 
 
-//constructor(state: welcome: true)
-//componentDidMount()
-//render (if this.state.welcome = true, render loading page; else, run app page with result 
+//componentDidMount()?
 //if shows.length === 0 send {sorry, couldn't find any shows :( )}
-//search (axios.post( , ()=> this.setState(welcome: false)))
 
 ReactDOM.render(<App />, document.getElementById('app'));

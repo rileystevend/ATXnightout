@@ -4,7 +4,7 @@
 //2. function pull a restaurant from zomato API
 
 const axios = require('axios');
-const jamKey = process.env.jamKey || '88p5mpn77tg3j8j2b4bhyxa6';
+const jamKey = process.env.jamKey || 'jh8fu4aex27733bzszu6kprj';
 
 const getPair = (zipcode, date)=> {
   return (
